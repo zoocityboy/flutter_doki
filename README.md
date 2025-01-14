@@ -3,9 +3,8 @@ Developed by 🦏 [zoocityboy][zoocityboy_link]
 # Melos Workspace Cleaner
 
 [![Pub](https://img.shields.io/pub/v/flutter_doki.svg?style=flat-square)](https://pub.dev/packages/flutter_doki)
-[![pub points](https://img.shields.io/pub/points/mwc?style=flat-square&color=2E8B57&label=pub%20points)](https://pub.dev/packages/flutter_doki/score)
+[![pub points](https://img.shields.io/pub/points/flutter_doki?style=flat-square&color=2E8B57&label=pub%20points)](https://pub.dev/packages/flutter_doki/score)
 [![ci](https://github.com/zoocityboy/flutter_doki/actions/workflows/ci.yaml/badge.svg?style=flat-square)](https://github.com/zoocityboy/flutter_doki/actions/workflows/ci.yaml)
-[![coverage](https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/coverage_badge.svg?style=flat-square)](https://github.com/zoocityboy/flutter_doki/actions)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=flat-square&logo=dart&logoColor=white)
