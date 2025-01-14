@@ -1,6 +1,6 @@
 name: flutter_doki
 description: "Retrive information about the device background killing apps, and show help to the user."
-version: 0.0.1
+version: 1.0.0
 homepage: https://zoocityboy.github.io/flutter_doki/
 documentation: https://pub.dev/documentation/flutter_doki/latest/
 repository: https://github.com/zoocityboy/flutter_doki
@@ -14,6 +14,8 @@ platforms:
 screenshots:
   - description: Dont kill my app
     path: assets/doki.png
+  - description: Dont kill my app
+    path: assets/flutter_1.png
 environment:
   sdk: ^3.2.0
   flutter: ">=3.0.0"

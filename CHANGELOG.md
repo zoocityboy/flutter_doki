@@ -1,3 +1,8 @@
+## 1.0.0
+**BREAKING: **
+  * api request moved to service
+  * Doki is singleton now
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Testing upload
