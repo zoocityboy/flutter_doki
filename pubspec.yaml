@@ -15,7 +15,7 @@ screenshots:
   - description: Dont kill my app
     path: assets/doki.png
   - description: Dont kill my app
-    path: assets/flutter_1.png
+    path: assets/flutter_01.png
 environment:
   sdk: ^3.2.0
   flutter: ">=3.0.0"

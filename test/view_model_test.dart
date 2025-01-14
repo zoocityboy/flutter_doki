@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter_doki/flutter_doki.dart';
 import 'package:flutter_doki/src/models/badge_state.dart';
 import 'package:flutter_doki/src/models/device.dart';
