@@ -46,7 +46,8 @@ class Doki {
   /// ```dart
   /// await FlutterDoki.open(appName: 'MyApp', type: BadgeType.portrait);
   /// ```
-  static Future<bool> open({String? appName, BadgeType type = BadgeType.landscape}) async {
+  static Future<bool> open(
+      {String? appName, BadgeType type = BadgeType.landscape}) async {
     final device = await getDevice();
     final uri = Uri(
       scheme: 'https',

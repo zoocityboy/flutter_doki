@@ -13,7 +13,9 @@ class DokiBadgeTheme with Diagnosticable {
   });
 
   factory DokiBadgeTheme.defaultTheme(Brightness brightness) {
-    return brightness == Brightness.light ? DokiBadgeTheme.lightTheme() : DokiBadgeTheme.darkTheme();
+    return brightness == Brightness.light
+        ? DokiBadgeTheme.lightTheme()
+        : DokiBadgeTheme.darkTheme();
   }
   factory DokiBadgeTheme.lightTheme() {
     return const DokiBadgeTheme(

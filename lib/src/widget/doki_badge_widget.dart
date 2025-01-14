@@ -52,7 +52,7 @@ class _DokiBadgeWidgetState extends State<DokiBadgeWidget> {
 }
 
 class _BadgeError extends StatelessWidget {
-  const _BadgeError({super.key});
+  const _BadgeError();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _BadgeError extends StatelessWidget {
 }
 
 class _BadgeLoading extends StatelessWidget {
-  const _BadgeLoading({super.key});
+  const _BadgeLoading();
 
   @override
   Widget build(BuildContext context) {

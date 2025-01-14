@@ -8,7 +8,8 @@ class DokiBadgeSquare extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color = Award.values
-        .firstWhere((element) => element.position == response.award, orElse: () => Award.defaultAward)
+        .firstWhere((element) => element.position == response.award,
+            orElse: () => Award.defaultAward)
         .color;
     return Container(
       clipBehavior: Clip.antiAlias,
@@ -66,8 +67,10 @@ class DokiBadgeLadnscape extends StatelessWidget {
       height: 80,
       child: Column(
         children: [
-          _DokiLandscapeTitleWidget(key: ValueKey('title_$response'), response: response),
-          _DokiLandscapeThumbsWidget(key: ValueKey('thumbs_$response'), response: response),
+          _DokiLandscapeTitleWidget(
+              key: ValueKey('title_$response'), response: response),
+          _DokiLandscapeThumbsWidget(
+              key: ValueKey('thumbs_$response'), response: response),
         ],
       ),
     );
@@ -95,7 +98,10 @@ class _DokiLandscapeTitleWidget extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             child: Text(
               response.name,
-              style: TextStyle(color: Colors.white70, fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold),
             ),
           )
         ],
@@ -111,7 +117,8 @@ class _DokiLandscapeThumbsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color = Award.values
-        .firstWhere((element) => element.position == response.award, orElse: () => Award.defaultAward)
+        .firstWhere((element) => element.position == response.award,
+            orElse: () => Award.defaultAward)
         .color;
     return Container(
       decoration: BoxDecoration(color: color),
@@ -120,7 +127,9 @@ class _DokiLandscapeThumbsWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(5, (index) {
           return Icon(
-            index <= (response.award ?? 0) ? Icons.thumb_down_rounded : Icons.thumb_down_outlined,
+            index <= (response.award ?? 0)
+                ? Icons.thumb_down_rounded
+                : Icons.thumb_down_outlined,
             color: Colors.white70,
             size: 20,
           );
