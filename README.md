@@ -1,6 +1,6 @@
 ![alt text](https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/doki.png "Resoure")
 Developed by 🦏 [zoocityboy][zoocityboy_link]
-# Melos Workspace Cleaner
+# Flutter Doki - Dont kill my app
 
 [![Pub](https://img.shields.io/pub/v/flutter_doki.svg?style=flat-square)](https://pub.dev/packages/flutter_doki)
 [![pub points](https://img.shields.io/pub/points/flutter_doki?style=flat-square&color=2E8B57&label=pub%20points)](https://pub.dev/packages/flutter_doki/score)
