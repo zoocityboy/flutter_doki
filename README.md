@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/assets/doki_dark.png">
-  <img alt="Doki Dont kill my app!" src="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/assets/doki.png">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/doki_dark.png">
+  <img alt="Doki Dont kill my app!" src="https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/doki.png">
 </picture>
 Developed by 🦏 [zoocityboy][zoocityboy_link]
 
@@ -54,7 +54,7 @@ DokiBadgeWidget(
 )
 ```
 #### Example app Screenshot
-<a href=""><img alt="Flutter developer Zoocityboy" src="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/assets/flutter_01.png" height="300">
+<a href=""><img alt="Flutter developer Zoocityboy" src="https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/flutter_01.png" height="300">
 
 ## 📝 License
 
