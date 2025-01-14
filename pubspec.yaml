@@ -1,0 +1,31 @@
+name: flutter_doki
+description: "A new Flutter package project."
+version: 0.0.1
+homepage: https://zoocityboy.github.io/flutter_doki/
+documentation: https://pub.dev/documentation/flutter_doki/latest/
+repository: https://github.com/zoocityboy/flutter_doki
+issue_tracker: https://github.com/zoocityboy/flutter_doki/issues
+topics:
+  - android
+  - dontkillmyapp
+platforms:
+  android:
+screenshots:
+  - description: Dont kill my app
+    path: assets/doki.png
+environment:
+  sdk: ^3.6.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  device_info_plus: ^11.2.1
+  url_launcher: ^6.3.1
+  http: ^1.2.2
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
