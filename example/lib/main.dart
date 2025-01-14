@@ -41,7 +41,8 @@ class _MainAppState extends State<MainApp> {
                   Doki.open(appName: 'com.example.app');
                 },
                 child: Text('Open in Webbrowser')),
-            TextButton(onPressed: getDokiResponse, child: Text('Get Doki Response')),
+            TextButton(
+                onPressed: getDokiResponse, child: Text('Get Doki Response')),
             SizedBox(
               height: 80,
               child: DokiBadgeWidget(
