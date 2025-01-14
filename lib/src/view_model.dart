@@ -16,7 +16,7 @@ class ViewModel extends ChangeNotifier {
 
   void load() {
     _loading();
-    Doki.getDokiResponse().then((value) {
+    Doki.fetch().then((value) {
       state = BadgeState.loaded;
       response = value;
       error = null;

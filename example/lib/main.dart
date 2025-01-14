@@ -18,7 +18,7 @@ class _MainAppState extends State<MainApp> {
   DokiResponse? dokiResponse;
   Exception? error;
   void getDokiResponse() async {
-    unawaited(Doki.getDokiResponse().then((value) {
+    unawaited(Doki.fetch().then((value) {
       print(value);
       setState(() {
         dokiResponse = value;

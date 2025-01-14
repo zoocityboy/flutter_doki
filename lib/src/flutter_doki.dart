@@ -66,7 +66,7 @@ class Doki {
   /// Returns a [Future] that completes with a [DokiResponse] object containing
   /// the processed device information.
 
-  static Future<DokiResponse> getDokiResponse() async {
+  static Future<DokiResponse> fetch() async {
     final device = await getDevice();
     return await _getContent(device);
   }

@@ -1,5 +1,5 @@
 name: flutter_doki
-description: "A new Flutter package project."
+description: "Retrive information about the device background killing apps, and show help to the user."
 version: 0.0.1
 homepage: https://zoocityboy.github.io/flutter_doki/
 documentation: https://pub.dev/documentation/flutter_doki/latest/
@@ -8,14 +8,15 @@ issue_tracker: https://github.com/zoocityboy/flutter_doki/issues
 topics:
   - android
   - dontkillmyapp
+  - doki
 platforms:
   android:
 screenshots:
   - description: Dont kill my app
     path: assets/doki.png
 environment:
-  sdk: ^3.6.0
-  flutter: ">=1.17.0"
+  sdk: ^3.2.0
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
