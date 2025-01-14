@@ -4,27 +4,31 @@ import 'package:flutter_doki/src/models/badge_state.dart';
 import 'package:flutter_doki/src/models/badge_type.dart';
 import 'package:flutter_doki/src/models/doki_response.dart';
 import 'package:flutter_doki/src/view_model.dart';
+import 'package:flutter_doki/src/widget/doki_badge_landscape.dart';
 import 'package:flutter_doki/src/widget/doki_badge_square.dart';
 
 class DokiBadgeWidget extends StatefulWidget {
   const DokiBadgeWidget({
     super.key,
-    this.type = BadgeType.landscape,
+    this.type = BadgeType.rectangle,
     this.errorBuilder,
     this.placeholderBuilder,
-  });
+    @visibleForTesting BadgeViewModel? viewModel,
+  }) : _viewModel = viewModel;
   final BadgeType type;
   final WidgetBuilder? placeholderBuilder;
   final WidgetBuilder? errorBuilder;
+  final BadgeViewModel? _viewModel;
   @override
   State<DokiBadgeWidget> createState() => _DokiBadgeWidgetState();
 }
 
 class _DokiBadgeWidgetState extends State<DokiBadgeWidget> {
-  ViewModel viewModel = ViewModel();
+  BadgeViewModel viewModel = BadgeViewModel();
   @override
   void initState() {
     super.initState();
+    viewModel = widget._viewModel ?? BadgeViewModel();
     viewModel.load();
   }
 
@@ -39,9 +43,7 @@ class _DokiBadgeWidgetState extends State<DokiBadgeWidget> {
     return ListenableBuilder(
       listenable: viewModel,
       builder: (context, child) => switch (viewModel.state) {
-        BadgeState.init ||
-        BadgeState.loading =>
-          widget.placeholderBuilder?.call(context) ?? _BadgeLoading(),
+        BadgeState.init || BadgeState.loading => widget.placeholderBuilder?.call(context) ?? _BadgeLoading(),
         BadgeState.error => widget.errorBuilder?.call(context) ?? _BadgeError(),
         BadgeState.loaded => _BadgeWidget(
             key: ValueKey(viewModel.response!),
@@ -67,23 +69,21 @@ class _BadgeLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.square(
-        dimension: 80, child: const CircularProgressIndicator());
+    return SizedBox.square(dimension: 80, child: const CircularProgressIndicator());
   }
 }
 
 class _BadgeWidget extends StatelessWidget {
-  const _BadgeWidget(
-      {super.key, required this.response, this.type = BadgeType.landscape});
+  const _BadgeWidget({super.key, required this.response, this.type = BadgeType.rectangle});
   final DokiResponse response;
   final BadgeType type;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Doki.open(appName: 'com.example.app'),
+      onTap: () => Doki().open(appName: 'com.example.app'),
       child: switch (type) {
-        BadgeType.landscape => DokiBadgeLadnscape(response: response),
+        BadgeType.rectangle => DokiBadgeLadnscape(response: response),
         BadgeType.square => DokiBadgeSquare(response: response),
       },
     );

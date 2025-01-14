@@ -18,7 +18,7 @@ class _MainAppState extends State<MainApp> {
   DokiResponse? dokiResponse;
   Exception? error;
   void getDokiResponse() async {
-    unawaited(Doki.fetch().then((value) {
+    unawaited(Doki().fetch().then((value) {
       setState(() {
         dokiResponse = value;
       });
@@ -33,25 +33,33 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        appBar: AppBar(
+          title: const Text('Doki Example'),
+        ),
+        body: ListView(
           children: [
             TextButton(
                 onPressed: () {
-                  Doki.open(appName: 'com.example.app');
+                  Doki().open(appName: 'com.example.app');
                 },
                 child: Text('Open in Webbrowser')),
-            TextButton(
-                onPressed: getDokiResponse, child: Text('Get Doki Response')),
+            TextButton(onPressed: getDokiResponse, child: Text('Get Doki Response')),
             SizedBox(
-              height: 80,
-              child: DokiBadgeWidget(
-                type: BadgeType.square,
+              height: 100,
+              child: Center(
+                child: DokiBadgeWidget(
+                  type: BadgeType.square,
+                ),
               ),
             ),
             SizedBox(height: 16),
-            DokiBadgeWidget(
-              type: BadgeType.landscape,
+            SizedBox(
+              height: 100,
+              child: Center(
+                child: DokiBadgeWidget(
+                  type: BadgeType.rectangle,
+                ),
+              ),
             ),
             SizedBox(height: 16),
           ],

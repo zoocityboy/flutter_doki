@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/doki.png "Resoure")
+![alt text](https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/doki_dark.png "Resoure")
 Developed by 🦏 [zoocityboy][zoocityboy_link]
 # Flutter Doki - Dont kill my app
 
@@ -6,19 +6,18 @@ Developed by 🦏 [zoocityboy][zoocityboy_link]
 [![pub points](https://img.shields.io/pub/points/flutter_doki?style=flat-square&color=2E8B57&label=pub%20points)](https://pub.dev/packages/flutter_doki/score)
 [![ci](https://github.com/zoocityboy/flutter_doki/actions/workflows/ci.yaml/badge.svg?style=flat-square)](https://github.com/zoocityboy/flutter_doki/actions/workflows/ci.yaml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-
-![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=flat-square&logo=dart&logoColor=white)
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?styleflat-square&logo=flutter&logoColor=white)
 
 
+The package is designed to help developers/users understand and handle device-specific
+battery optimization settings that might affect their app's background operations.
 Simply open or get informations from [DontKillMyApp.com](https://dontkillmyapp.com)
 
-The package appears to include:
-
-## Features
-- [x] Widgets like `DokiBadgeWidget` for displaying device ratings
-- [x] Doki class retrieve informations for users and developers 
-- [x] Integration with the DontKillMyApp.com API
+### Features
+* Open device-specific pages on dontkillmyapp.com
+* Retrieve device information and manufacturer-specific optimization guidelines
+* Fetch and parse content from the dontkillmyapp.com API
+* Add Badge widgets to the app
 
 ## 🚀  Getting started
 
@@ -30,13 +29,11 @@ dart pub add flutter_doki
 
 ## Usage
 
-Open informations for user in In App Webview
+Opens an In-AppWebView displaying instructions on how to disable battery optimization for your app on the current device.
 
 ```dart
 Doki.open(appName: 'com.example.app');
 ```
-
-
 
 ```dart
 Doki.fetch()
@@ -44,6 +41,14 @@ Doki.fetch()
     .catchError((e){...});
 ```
 
+### Widget
+You can use pre-made Badge widget with informations about rating manufacturer of the device with link to more information.
+
+```dart
+DokiBadgeWidget(
+    type: BadgeType.square // .square, .rectangle
+)
+```
 
 ## 📝 License
 

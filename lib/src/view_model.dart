@@ -3,28 +3,43 @@ import 'package:flutter_doki/src/flutter_doki.dart';
 import 'package:flutter_doki/src/models/badge_state.dart';
 import 'package:flutter_doki/src/models/doki_response.dart';
 
-class ViewModel extends ChangeNotifier {
-  BadgeState state = BadgeState.init;
-  Exception? error;
-  DokiResponse? response;
+class BadgeViewModel extends ChangeNotifier {
+  BadgeState _state = BadgeState.init;
+  BadgeState get state => _state;
+
+  Exception? _error;
+  Exception? get error => _error;
+
+  DokiResponse? _response;
+  DokiResponse? get response => _response;
+  @visibleForTesting
+  void setValue({DokiResponse? response, Exception? error, BadgeState? state}) {
+    if (response != null) _response = response;
+    if (error != null) _error = error;
+    if (state != null) _state = state;
+    notifyListeners();
+  }
+
+  final Doki doki = Doki();
+
   void _loading() {
-    state = BadgeState.loading;
-    error = null;
-    response = null;
+    _state = BadgeState.loading;
+    _error = null;
+    _response = null;
     notifyListeners();
   }
 
   void load() {
     _loading();
-    Doki.fetch().then((value) {
-      state = BadgeState.loaded;
-      response = value;
-      error = null;
+    doki.fetch().then((value) {
+      _state = BadgeState.loaded;
+      _response = value;
+      _error = null;
       notifyListeners();
     }).catchError((e) {
-      state = BadgeState.error;
-      error = e;
-      response = null;
+      _state = BadgeState.error;
+      _error = e;
+      _response = null;
       notifyListeners();
     });
   }

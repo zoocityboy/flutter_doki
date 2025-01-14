@@ -1,5 +1,5 @@
 enum BadgeType {
-  landscape(1),
+  rectangle(1),
   square(2);
 
   const BadgeType(this.value);

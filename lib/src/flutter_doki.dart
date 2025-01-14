@@ -1,11 +1,9 @@
-import 'dart:convert';
-
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_doki/flutter_doki.dart';
-import 'package:flutter_doki/src/models/device.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_doki/src/service/doki_service.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'models/device.dart';
 
 /// A utility class for interacting with the "Don't Kill My App" service.
 ///
@@ -29,6 +27,20 @@ import 'package:url_launcher/url_launcher.dart';
 ///
 /// All methods in this class are static and do not require instantiation of the class.
 class Doki {
+  static final Doki _instance = Doki._();
+  factory Doki() => _instance;
+  Doki._();
+
+  DokiService _service = DokiServiceImpl();
+
+  Device? _device;
+
+  @visibleForTesting
+  DokiService get service => _service;
+
+  @visibleForTesting
+  set service(DokiService service) => _service = service;
+
   /// Opens the "Don't Kill My App" website for the user's device manufacturer.
   ///
   /// This static method constructs and launches a URL to the appropriate page on
@@ -44,17 +56,17 @@ class Doki {
   ///
   /// Example:
   /// ```dart
-  /// await FlutterDoki.open(appName: 'MyApp', type: BadgeType.portrait);
+  /// await FlutterDoki.open(appName: 'MyApp', type: BadgeType.square);
   /// ```
-  static Future<bool> open(
-      {String? appName, BadgeType type = BadgeType.landscape}) async {
-    final device = await getDevice();
+  Future<bool> open({String? appName, BadgeType type = BadgeType.rectangle}) async {
+    _device ??= await _service.device();
     final uri = Uri(
       scheme: 'https',
       host: DontkillmyApp.baseUurl,
-      path: device.manufacturer,
+      path: _device!.manufacturer,
       query: '${type.value}&app=$appName',
     );
+    debugPrint('Opening URL: $uri');
 
     return await _launchUrl(uri);
   }
@@ -67,9 +79,9 @@ class Doki {
   /// Returns a [Future] that completes with a [DokiResponse] object containing
   /// the processed device information.
 
-  static Future<DokiResponse> fetch() async {
-    final device = await getDevice();
-    return await _getContent(device);
+  Future<DokiResponse> fetch() async {
+    _device ??= await _service.device();
+    return await _service.fetch(_device!);
   }
 
   /// Launches the given URL in an in-app browser.
@@ -80,7 +92,7 @@ class Doki {
   /// Returns a [Future<bool>] that completes with:
   /// * true - if the URL was successfully launched
   /// * false - if the URL could not be launched
-  static Future<bool> _launchUrl(Uri url) async {
+  Future<bool> _launchUrl(Uri url) async {
     if (await canLaunchUrl(url)) {
       return await launchUrl(
         url,
@@ -88,61 +100,6 @@ class Doki {
       );
     } else {
       return false;
-    }
-  }
-
-  /// Fetches device-specific content from the dontkillmyapp.com API.
-  ///
-  /// Takes a [Device] parameter containing device manufacturer information.
-  /// Constructs a URI to fetch JSON data for the specific manufacturer.
-  ///
-  /// Returns a [Future] that completes with a [DokiResponse] containing the parsed JSON data.
-  ///
-  /// Throws an [Exception] if the HTTP request fails (status code != 200).
-  ///
-  /// Example URI format: https://dontkillmyapp.com/api/{manufacturer}.json
-  static Future<DokiResponse> _getContent(Device device) async {
-    final uri = Uri(
-      scheme: 'https',
-      host: DontkillmyApp.baseUurl,
-      path: '${DontkillmyApp.endpoint}/${device.manufacturer}.json',
-    );
-    debugPrint(uri.toString());
-    final data = await http.get(uri);
-    if (data.statusCode != 200) {
-      throw Exception('Failed to load content');
-    }
-    return DokiResponse.fromJson(jsonDecode(data.body));
-  }
-
-  /// Returns a [Device] object containing device information.
-  ///
-  /// Uses [DeviceInfoPlugin] to fetch device details including:
-  /// * manufacturer
-  /// * model
-  /// * Android version
-  ///
-  /// If device information cannot be retrieved, returns a fallback [Device] with:
-  /// * manufacturer: DontkillmyApp.fallbackManufacturer
-  /// * model: 'samsung'
-  /// * androidVersion: '13'
-  ///
-  /// Throws no exceptions as errors are handled internally.
-  static Future<Device> getDevice() async {
-    try {
-      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-      return Device(
-        manufacturer: androidInfo.manufacturer,
-        model: androidInfo.model,
-        androidVersion: androidInfo.version.release,
-      );
-    } catch (e) {
-      return Device(
-        manufacturer: DontkillmyApp.fallbackManufacturer,
-        model: 'samsung',
-        androidVersion: '13',
-      );
     }
   }
 }
