@@ -1,5 +1,9 @@
-![alt text](https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/doki_dark.png "Resoure")
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/doki_dark.png">
+  <img alt="Doki Dont kill my app!" src="./assets/doki.png">
+</picture>
 Developed by 🦏 [zoocityboy][zoocityboy_link]
+
 # Flutter Doki - Dont kill my app
 
 [![Pub](https://img.shields.io/pub/v/flutter_doki.svg?style=flat-square)](https://pub.dev/packages/flutter_doki)
@@ -55,9 +59,11 @@ DokiBadgeWidget(
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 -------------------
-[![zoocityboy][logo_white]][zoocityboy_link_dark]
-[![zoocityboy][logo_black]][zoocityboy_link_light]
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_light.png">
+  <img alt="Flutter developer Zoocityboy" src="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_dark.png">
+</picture>
 
 [logo_black]:https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_dark.png#gh-light-mode-only
 [logo_white]: https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_light.png#gh-dark-mode-only
