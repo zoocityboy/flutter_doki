@@ -1,4 +1,4 @@
-## 1.0.1
+## 1.0.0+1
 - doc: images in readme
 ## 1.0.0
 **BREAKING: **
