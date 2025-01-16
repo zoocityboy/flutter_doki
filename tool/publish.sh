@@ -26,6 +26,6 @@ flutter pub publish
 echo "🧹 Cleaning up..."
 # Restore original README
 git reset --hard HEAD^1
-rm "$PROJECT_DIR/README.md.bak"
+# rm "$PROJECT_DIR/README.md.bak"
 
 echo "✅ Published successfully!"
