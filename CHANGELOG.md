@@ -1,3 +1,5 @@
+## 1.0.0+3
+- style: fix code style
 ## 1.0.0+2
 - style: fix code style
 
