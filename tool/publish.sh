@@ -18,6 +18,7 @@ sed -i '' \
     "$PROJECT_DIR/README.md"
 
 # Commit changes
+git add .
 git commit -am "chore: prepare README.md for publishing."
 
 echo "🚀 Publishing to pub.dev..."
