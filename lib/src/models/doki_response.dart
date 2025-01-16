@@ -53,6 +53,7 @@ class DokiResponse {
 
   @override
   String toString() {
+    // ignore: lines_longer_than_80_chars
     return 'DokiResponse(name: $name, manufacturer: $manufacturer, url: $url, award: $award, position: $position, explanation: $explanation, userSolution: $userSolution, developerSolution: $developerSolution)';
   }
 }

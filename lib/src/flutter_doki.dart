@@ -9,11 +9,13 @@ import 'models/device.dart';
 ///
 /// This class provides static methods to:
 /// * Open device-specific pages on dontkillmyapp.com
-/// * Retrieve device information and manufacturer-specific optimization guidelines
+/// * Retrieve device information and manufacturer-specific
+/// optimization guidelines
 /// * Fetch and parse content from the dontkillmyapp.com API
 ///
-/// The class is designed to help developers understand and handle device-specific
-/// battery optimization settings that might affect their app's background operations.
+/// The class is designed to help developers understand and handle
+/// device-specific battery optimization settings that might affect their
+/// app's background operations.
 ///
 /// Example usage:
 /// ```dart
@@ -25,7 +27,8 @@ import 'models/device.dart';
 /// print(response.explanation);
 /// ```
 ///
-/// All methods in this class are static and do not require instantiation of the class.
+/// All methods in this class are static and do not require
+/// instantiation of the class.
 class Doki {
   static final Doki _instance = Doki._();
   factory Doki() => _instance;
@@ -43,8 +46,9 @@ class Doki {
 
   /// Opens the "Don't Kill My App" website for the user's device manufacturer.
   ///
-  /// This static method constructs and launches a URL to the appropriate page on
-  /// dontkillmyapp.com based on the device manufacturer and specified parameters.
+  /// This static method constructs and launches a URL to the
+  /// appropriate page on dontkillmyapp.com based on the device
+  /// manufacturer and specified parameters.
   ///
   /// Parameters:
   /// - [appName] Optional name of the app to be included in the URL query
@@ -58,7 +62,8 @@ class Doki {
   /// ```dart
   /// await FlutterDoki.open(appName: 'MyApp', type: BadgeType.square);
   /// ```
-  Future<bool> open({String? appName, BadgeType type = BadgeType.rectangle}) async {
+  Future<bool> open(
+      {String? appName, BadgeType type = BadgeType.rectangle}) async {
     _device ??= await _service.device();
     final uri = Uri(
       scheme: 'https',
@@ -73,8 +78,9 @@ class Doki {
 
   /// Returns a [DokiResponse] containing device information.
   ///
-  /// This method first retrieves the device information using [getDevice] and then
-  /// processes it through [_getContent] to generate the final response.
+  /// This method first retrieves the device information
+  /// using [getDevice] and then processes it through [_getContent]
+  /// to generate the final response.
   ///
   /// Returns a [Future] that completes with a [DokiResponse] object containing
   /// the processed device information.
@@ -126,6 +132,7 @@ class DontkillmyApp {
   /// Base endpoint for the dontkillmyapp.com API
   static String endpoint = "/api/v2/";
 
-  /// Fallback manufacturer for when the device manufacturer cannot be determined
+  /// Fallback manufacturer for when the device manufacturer
+  /// cannot be determined
   static String fallbackManufacturer = "general";
 }

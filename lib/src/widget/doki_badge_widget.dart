@@ -43,7 +43,9 @@ class _DokiBadgeWidgetState extends State<DokiBadgeWidget> {
     return ListenableBuilder(
       listenable: viewModel,
       builder: (context, child) => switch (viewModel.state) {
-        BadgeState.init || BadgeState.loading => widget.placeholderBuilder?.call(context) ?? _BadgeLoading(),
+        BadgeState.init ||
+        BadgeState.loading =>
+          widget.placeholderBuilder?.call(context) ?? _BadgeLoading(),
         BadgeState.error => widget.errorBuilder?.call(context) ?? _BadgeError(),
         BadgeState.loaded => _BadgeWidget(
             key: ValueKey(viewModel.response!),
@@ -69,12 +71,14 @@ class _BadgeLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.square(dimension: 80, child: const CircularProgressIndicator());
+    return SizedBox.square(
+        dimension: 80, child: const CircularProgressIndicator());
   }
 }
 
 class _BadgeWidget extends StatelessWidget {
-  const _BadgeWidget({super.key, required this.response, this.type = BadgeType.rectangle});
+  const _BadgeWidget(
+      {super.key, required this.response, this.type = BadgeType.rectangle});
   final DokiResponse response;
   final BadgeType type;
 

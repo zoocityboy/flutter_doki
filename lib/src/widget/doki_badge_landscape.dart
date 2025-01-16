@@ -17,8 +17,10 @@ class DokiBadgeLadnscape extends StatelessWidget {
       height: 80,
       child: Column(
         children: [
-          _DokiLandscapeTitleWidget(key: ValueKey('title_$response'), response: response),
-          _DokiLandscapeThumbsWidget(key: ValueKey('thumbs_$response'), response: response),
+          _DokiLandscapeTitleWidget(
+              key: ValueKey('title_$response'), response: response),
+          _DokiLandscapeThumbsWidget(
+              key: ValueKey('thumbs_$response'), response: response),
         ],
       ),
     );
@@ -31,7 +33,8 @@ class _DokiLandscapeTitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color = Award.values
-        .firstWhere((element) => element.position == response.award, orElse: () => Award.defaultAward)
+        .firstWhere((element) => element.position == response.award,
+            orElse: () => Award.defaultAward)
         .color;
     return Container(
       height: 40,
@@ -49,12 +52,17 @@ class _DokiLandscapeTitleWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: RichText(
-                text: TextSpan(style: TextStyle(color: Colors.white, fontSize: 20), children: [
-              if (response.award != null) TextSpan(text: '#${response.award} ', style: TextStyle(color: color)),
-              TextSpan(
-                text: response.name,
-              )
-            ])),
+                text: TextSpan(
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    children: [
+                  if (response.award != null)
+                    TextSpan(
+                        text: '#${response.award} ',
+                        style: TextStyle(color: color)),
+                  TextSpan(
+                    text: response.name,
+                  )
+                ])),
           )
         ],
       ),
@@ -69,7 +77,8 @@ class _DokiLandscapeThumbsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color = Award.values
-        .firstWhere((element) => element.position == response.award, orElse: () => Award.defaultAward)
+        .firstWhere((element) => element.position == response.award,
+            orElse: () => Award.defaultAward)
         .color;
     return Container(
       decoration: BoxDecoration(color: color),
@@ -78,7 +87,9 @@ class _DokiLandscapeThumbsWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(5, (index) {
           return Icon(
-            index <= (response.award ?? 0) ? Icons.thumb_down_rounded : Icons.thumb_down_outlined,
+            index <= (response.award ?? 0)
+                ? Icons.thumb_down_rounded
+                : Icons.thumb_down_outlined,
             color: Colors.white70,
             size: 20,
           );
