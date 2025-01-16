@@ -13,7 +13,8 @@ abstract class DokiService {
   /// * model
   /// * Android version
   ///
-  /// If device information cannot be retrieved, returns a fallback [Device] with:
+  /// If device information cannot be retrieved, returns a fallback [Device]
+  /// with:
   /// * manufacturer: DontkillmyApp.fallbackManufacturer
   /// * model: 'samsung'
   /// * androidVersion: '13'
@@ -26,7 +27,8 @@ abstract class DokiService {
   /// Takes a [Device] parameter containing device manufacturer information.
   /// Constructs a URI to fetch JSON data for the specific manufacturer.
   ///
-  /// Returns a [Future] that completes with a [DokiResponse] containing the parsed JSON data.
+  /// Returns a [Future] that completes with a [DokiResponse] containing the
+  /// parsed JSON data.
   ///
   /// Throws an [Exception] if the HTTP request fails (status code != 200).
   ///

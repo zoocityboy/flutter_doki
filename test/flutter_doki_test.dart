@@ -12,7 +12,9 @@ class MockDevice extends Mock implements Device {}
 
 class MockDokiResponse extends Mock implements DokiResponse {}
 
-class MockUrlLauncher extends Mock with MockPlatformInterfaceMixin implements UrlLauncherPlatform {}
+class MockUrlLauncher extends Mock
+    with MockPlatformInterfaceMixin
+    implements UrlLauncherPlatform {}
 
 class FakeDevice extends Fake implements Device {
   @override
@@ -52,12 +54,14 @@ void main() {
       // Setup default mock responses
       when(() => mockDevice.manufacturer).thenReturn('samsung');
       when(() => mockService.device()).thenAnswer((_) async => mockDevice);
-      when(() => mockService.fetch(any())).thenAnswer((_) async => mockResponse);
+      when(() => mockService.fetch(any()))
+          .thenAnswer((_) async => mockResponse);
     });
 
     group('fetch', () {
       test('should return DokiResponse when successful', () async {
-        when(() => mockService.fetch(any())).thenAnswer((_) async => mockResponse);
+        when(() => mockService.fetch(any()))
+            .thenAnswer((_) async => mockResponse);
         final response = await doki.fetch();
 
         verify(() => mockService.device()).called(1);
@@ -66,7 +70,8 @@ void main() {
       });
 
       test('should throw exception when service fails', () async {
-        when(() => mockService.fetch(any())).thenThrow(Exception('Service error'));
+        when(() => mockService.fetch(any()))
+            .thenThrow(Exception('Service error'));
 
         expect(() => doki.fetch(), throwsException);
       });
@@ -82,7 +87,9 @@ void main() {
         when(() => mock.launchUrl(any(), any())).thenAnswer((_) async => true);
         when(() => mockService.device()).thenAnswer((_) async => fakeDevice);
 
-        expectLater(await doki.open(appName: 'testApp', type: BadgeType.rectangle), isTrue);
+        expectLater(
+            await doki.open(appName: 'testApp', type: BadgeType.rectangle),
+            isTrue);
         // verify(() => mockService.device()).called(1);
         expect(fakeDevice.manufacturer, 'manufacturer');
         expect(fakeDevice.model, 'general');
@@ -99,7 +106,8 @@ void main() {
         when(() => mock.launchUrl(any(), any())).thenAnswer((_) async => true);
         when(() => mockService.device()).thenAnswer((_) async => fakeDevice);
 
-        expectLater(await doki.open(appName: 'testApp', type: BadgeType.square), isTrue);
+        expectLater(await doki.open(appName: 'testApp', type: BadgeType.square),
+            isTrue);
         // verify(() => mockService.device()).called(1);
       });
     });

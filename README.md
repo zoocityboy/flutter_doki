@@ -1,4 +1,6 @@
 <img alt="Doki Dont kill my app!" src="https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/doki.png">
+<br>
+
 Developed by 🦏 [zoocityboy][zoocityboy_link]
 
 # Flutter Doki - Dont kill my app
@@ -33,11 +35,11 @@ dart pub add flutter_doki
 Opens an In-AppWebView displaying instructions on how to disable battery optimization for your app on the current device.
 
 ```dart
-Doki.open(appName: 'com.example.app');
+Doki().open(appName: 'com.example.app');
 ```
 
 ```dart
-Doki.fetch()
+Doki().fetch()
     .then((response){ ...})
     .catchError((e){...});
 ```
@@ -58,8 +60,11 @@ DokiBadgeWidget(
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 -------------------
-  
-<img alt="Flutter developer Zoocityboy" src="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_dark.png">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_light.png">
+  <img alt="Flutter developer Zoocityboy" src="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_dark.png">
+</picture>
 
 
 [logo_black]:https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_dark.png#gh-light-mode-only
