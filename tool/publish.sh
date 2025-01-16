@@ -9,10 +9,15 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo "📦 Preparing files for publishing..."
 
-# Remove github-specific elements and comments
+# Create temporary README for publishing
+cp "$PROJECT_DIR/README.md" "$PROJECT_DIR/README.bak.md"
+
+# Replace content between picture tags using sed
 sed -i '' \
-    -e 's/<picture id="github_header">.*<\/picture>/<img alt="Doki Dont kill my app!" src="https:\/\/raw.githubusercontent.com\/zoocityboy\/flutter_doki\/main\/assets\/doki.png">/g' \
-    -e 's/<picture id="github_zoocityboy">.*<\/picture>/<img alt="Flutter developer Zoocityboy" src="https:\/\/raw.githubusercontent.com\/zoocityboy\/zoo_brand\/main\/styles\/README\/zoocityboy_dark.png">/g' \
+    -e '/<picture id="github_header">/,/<\/picture>/c\
+<img alt="Doki Dont kill my app!" src="https://raw.githubusercontent.com/zoocityboy/flutter_doki/main/assets/doki.png">' \
+    -e '/<picture id="github_zoocityboy">/,/<\/picture>/c\
+<img alt="Flutter developer Zoocityboy" src="https://raw.githubusercontent.com/zoocityboy/zoo_brand/main/styles/README/zoocityboy_dark.png">' \
     "$PROJECT_DIR/README.md"
 
 # Commit changes
@@ -24,5 +29,6 @@ flutter pub publish
 echo "🧹 Cleaning up..."
 # Restore original README
 git reset --hard HEAD^1
+rm "$PROJECT_DIR/README.md.bak"
 
 echo "✅ Published successfully!"
