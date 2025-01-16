@@ -9,14 +9,10 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo "📦 Preparing files for publishing..."
 
-# Create temporary README for publishing
-cp "$PROJECT_DIR/README.md" "$PROJECT_DIR/README.md.bak"
-
 # Remove github-specific elements and comments
 sed -i '' \
-    -e '/<!--github-->/,/<!--\^github-->/d' \
-    -e '/<picture id="github_.*>/,/<\/picture>/d' \
-    -e 's/id="pubdev_.*" style="display:none;"/id="pubdev_header"/' \
+    -e 's/<picture id="github_header">.*<\/picture>/<img alt="Doki Dont kill my app!" src="https:\/\/raw.githubusercontent.com\/zoocityboy\/flutter_doki\/main\/assets\/doki.png">/g' \
+    -e 's/<picture id="github_zoocityboy">.*<\/picture>/<img alt="Flutter developer Zoocityboy" src="https:\/\/raw.githubusercontent.com\/zoocityboy\/zoo_brand\/main\/styles\/README\/zoocityboy_dark.png">/g' \
     "$PROJECT_DIR/README.md"
 
 # Commit changes
@@ -28,6 +24,5 @@ flutter pub publish
 echo "🧹 Cleaning up..."
 # Restore original README
 git reset --hard HEAD^1
-# mv "$PROJECT_DIR/README.md.bak" "$PROJECT_DIR/README.md"
 
 echo "✅ Published successfully!"
