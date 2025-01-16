@@ -9,9 +9,6 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo "📦 Preparing files for publishing..."
 
-# Create temporary README for publishing
-cp "$PROJECT_DIR/README.md" "$PROJECT_DIR/README.bak.md"
-
 # Replace content between picture tags using sed
 sed -i '' \
     -e '/<picture id="github_header">/,/<\/picture>/c\
