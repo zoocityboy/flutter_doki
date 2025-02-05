@@ -32,6 +32,13 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.from(
+          colorScheme: ColorScheme.dark(
+        primary: Colors.blue,
+        secondary: Colors.red,
+      )),
+      themeMode: ThemeMode.dark,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Doki Example'),
@@ -40,7 +47,7 @@ class _MainAppState extends State<MainApp> {
           children: [
             TextButton(
                 onPressed: () {
-                  Doki().open(appName: 'com.example.app');
+                  Doki().open();
                 },
                 child: Text('Open in Webbrowser')),
             TextButton(
@@ -63,6 +70,16 @@ class _MainAppState extends State<MainApp> {
               ),
             ),
             SizedBox(height: 16),
+            if (dokiResponse != null)
+              Column(
+                children: [
+                  Text('Name: ${dokiResponse!.name}'),
+                  Text('Award: ${dokiResponse!.award}'),
+                  Text('Position: ${dokiResponse!.position}'),
+                  Text('Url: ${dokiResponse!.url}'),
+                ],
+              ),
+            if (error != null) Text('Error: $error'),
           ],
         ),
       ),

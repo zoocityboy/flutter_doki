@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_doki/flutter_doki.dart';
 import 'package:flutter_doki/src/service/doki_service.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'models/device.dart';
@@ -37,6 +38,7 @@ class Doki {
   DokiService _service = DokiServiceImpl();
 
   Device? _device;
+  PackageInfo? _packageInfo;
 
   @visibleForTesting
   DokiService get service => _service;
@@ -60,16 +62,17 @@ class Doki {
   ///
   /// Example:
   /// ```dart
-  /// await FlutterDoki.open(appName: 'MyApp', type: BadgeType.square);
+  /// await Doki.open(appName: 'MyApp', type: BadgeType.square);
   /// ```
   Future<bool> open(
       {String? appName, BadgeType type = BadgeType.rectangle}) async {
     _device ??= await _service.device();
+    _packageInfo ??= await _service.packageInfo();
     final uri = Uri(
       scheme: 'https',
       host: DontkillmyApp.baseUurl,
       path: _device!.manufacturer,
-      query: '${type.value}&app=$appName',
+      query: '${type.value}&app=${appName ?? _packageInfo?.appName}',
     );
     debugPrint('Opening URL: $uri');
 
@@ -105,6 +108,7 @@ class Doki {
         mode: LaunchMode.inAppBrowserView,
       );
     } else {
+      debugPrint('Could not launch URL: $url');
       return false;
     }
   }

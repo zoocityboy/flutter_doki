@@ -34,13 +34,28 @@ Simply open or get informations from [DontKillMyApp.com](https://dontkillmyapp.c
 dart pub add flutter_doki
 ```
 
+### AndroidManifext.xml
+Add the following permission to your AndroidManifest.xml file:
+
+```xml
+<queries>
+  <!-- If your application checks for inAppBrowserView launch mode support -->
+  <intent>
+      <action android:name="android.support.customtabs.action.CustomTabsService" />
+  </intent>
+</queries>
+```
+
+
 ## Usage
 
 Opens an In-AppWebView displaying instructions on how to disable battery optimization for your app on the current device.
 
 ```dart
-Doki().open(appName: 'com.example.app');
+Doki().open(appName: 'My Special App');
 ```
+> if you don't provide appName, it will use the app name from the package.
+
 
 ```dart
 Doki().fetch()

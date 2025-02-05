@@ -4,6 +4,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_doki/flutter_doki.dart';
 import 'package:flutter_doki/src/models/device.dart';
 import 'package:http/http.dart' as http;
+import 'package:package_info_plus/package_info_plus.dart';
 
 abstract class DokiService {
   /// Returns a [Device] object containing device information.
@@ -34,9 +35,17 @@ abstract class DokiService {
   ///
   /// Example URI format: https://dontkillmyapp.com/api/{manufacturer}.json
   Future<DokiResponse> fetch(Device device);
+
+  /// Returns a [PackageInfo] object containing package information.
+  Future<PackageInfo> packageInfo();
 }
 
 class DokiServiceImpl implements DokiService {
+  @override
+  Future<PackageInfo> packageInfo() async {
+    return await PackageInfo.fromPlatform();
+  }
+
   @override
   Future<Device> device() async {
     try {

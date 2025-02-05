@@ -80,6 +80,8 @@ class _DokiLandscapeThumbsWidget extends StatelessWidget {
         .firstWhere((element) => element.position == response.award,
             orElse: () => Award.defaultAward)
         .color;
+    final onColor =
+        color.computeLuminance() > 0.5 ? Colors.black87 : Colors.white70;
     return Container(
       decoration: BoxDecoration(color: color),
       height: 40,
@@ -90,7 +92,7 @@ class _DokiLandscapeThumbsWidget extends StatelessWidget {
             index <= (response.award ?? 0)
                 ? Icons.thumb_down_rounded
                 : Icons.thumb_down_outlined,
-            color: Colors.white70,
+            color: onColor,
             size: 20,
           );
         }),
